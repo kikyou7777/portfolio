@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/* Brutalist Design System */
+@theme {
+  /* Colors - High Contrast Brutalist Palette */
+  --color-brutal-black: #000000;
+  --color-brutal-white: #ffffff;
+  --color-brutal-cream: #f5f5f0;
+  --color-brutal-gray: #e5e5e5;
+  --color-brutal-dark: #1a1a1a;
+  --color-brutal-accent: #ff4d00;
+  --color-brutal-accent-hover: #ff6b2b;
+  
+  /* Typography */
+  --font-brutal: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-brutal-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Border */
+  --border-brutal: 3px solid var(--color-brutal-black);
+  --border-brutal-thick: 4px solid var(--color-brutal-black);
+  
+  /* Shadows - Brutalist offset shadows */
+  --shadow-brutal: 6px 6px 0px var(--color-brutal-black);
+  --shadow-brutal-sm: 4px 4px 0px var(--color-brutal-black);
+  --shadow-brutal-lg: 8px 8px 0px var(--color-brutal-black);
+  --shadow-brutal-hover: 3px 3px 0px var(--color-brutal-black);
+  
+  /* Spacing */
+  --spacing-brutal-section: 120px;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-brutal);
+  background-color: var(--color-brutal-cream);
+  color: var(--color-brutal-black);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-brutal-black);
+  color: var(--color-brutal-white);
+}
+
+/* Brutalist Components */
+.brutal-border {
+  border: var(--border-brutal);
+}
+
+.brutal-shadow {
+  box-shadow: var(--shadow-brutal);
+}
+
+.brutal-shadow-sm {
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.brutal-shadow-lg {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-family: var(--font-brutal);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-brutal-black);
+  color: var(--color-brutal-white);
+  border: var(--border-brutal);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.brutal-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-brutal-hover);
+}
+
+.brutal-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutal-btn-outline {
+  background-color: var(--color-brutal-white);
+  color: var(--color-brutal-black);
+}
+
+.brutal-btn-accent {
+  background-color: var(--color-brutal-accent);
+  border-color: var(--color-brutal-black);
+}
+
+.brutal-btn-accent:hover {
+  background-color: var(--color-brutal-accent-hover);
+}
+
+/* Typography Classes */
+.brutal-heading-xl {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.brutal-heading-lg {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.brutal-heading-md {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.brutal-text {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.brutal-text-sm {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.brutal-mono {
+  font-family: var(--font-brutal-mono);
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Stagger Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Grid Pattern Background */
+.brutal-grid-bg {
+  background-image: 
+    linear-gradient(var(--color-brutal-black) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-brutal-black) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-color: var(--color-brutal-cream);
+}
+
+/* Noise texture overlay */
+.brutal-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
